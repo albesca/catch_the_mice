@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cat_wail.wav-ef2358dba1f6e3f600f2ce47f385496b.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/cat_wail.wav"
+dest_files=[ "res://.import/cat_wail.wav-ef2358dba1f6e3f600f2ce47f385496b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
