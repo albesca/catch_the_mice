@@ -2,6 +2,7 @@ extends "res://Assets/Scripts/Animal.gd"
 
 
 signal caught_mouse
+signal drop_mouse(dropped)
 
 var last_dash = 0
 export var dash_timeout = 2
@@ -12,6 +13,7 @@ var dead = false
 
 
 func _ready():
+	mouse_caught = false
 	player_controlled = true
 
 
@@ -31,13 +33,17 @@ func _process(delta):
 			elif Input.is_action_pressed("ui_up"):
 				direction.y = -1
 		
-		if last_dash == 0 and !mouse_caught:
+		if last_dash > 0:
+			last_dash = clamp(last_dash - delta * 2, 0, dash_timeout)
+		elif mouse_caught:
+			if Input.is_action_just_pressed("ui_select"):
+				emit_signal("drop_mouse", true)
+
+		elif last_dash == 0:
 			if Input.is_action_just_pressed("ui_select"):
 				last_dash = dash_timeout
 				speed = speed * dash_speed
 				print("dash!")
-		else:
-			last_dash = clamp(last_dash - delta * 2, 0, dash_timeout)
 		
 		Global.cat_position = position
 

@@ -46,15 +46,20 @@ func game_over():
 	emit_signal("life_lost")
 
 
-func drop_mouse(body):
+func leave_mouse(dropped):
 	var dead_mouse = load("res://Assets/Scenes/MouseDead.tscn").instance()
-	dead_mouse.position = body.position
+	dead_mouse.position = Global.cat_position
+	dead_mouse.dropped = dropped
 	add_child(dead_mouse)
 	print("drop mouse")
 	$Stairs/Area.set_deferred("disabled", true)
 	$Cat/MouseDead.visible = false
 	$Cat/Bite/Reach.set_deferred("disabled", false)
 	$Cat.mouse_caught = false
+
+
+func drop_mouse(_body):
+	leave_mouse(false)
 	caught_mice += 1
 	if caught_mice == mice:
 		print("level done!")

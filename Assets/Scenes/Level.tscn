@@ -81,4 +81,5 @@ __meta__ = {
 [node name="Lives" parent="." instance=ExtResource( 3 )]
 position = Vector2( -150, -118 )
 [connection signal="caught_mouse" from="Cat" to="." method="caught_mouse"]
+[connection signal="drop_mouse" from="Cat" to="." method="leave_mouse"]
 [connection signal="body_entered" from="Stairs" to="." method="drop_mouse"]
