@@ -22,7 +22,7 @@ func _process(delta):
 		if speed > base_speed:
 			speed = clamp(speed - delta * 100 * dash_speed, base_speed, base_speed * dash_speed)
 		else:
-			direction = Vector2(0, 0)
+			direction = Vector2.ZERO
 			if Input.is_action_pressed("ui_left"):
 				direction.x = -1
 			elif Input.is_action_pressed("ui_right"):
@@ -64,6 +64,6 @@ func play_sound():
 
 func died():
 	dead = true
-	direction = Vector2(0, 0)
+	direction = Vector2.ZERO
 	speed = 0
 	play_sound()

@@ -68,7 +68,7 @@ position = Vector2( 0, -6 )
 texture = ExtResource( 2 )
 
 [node name="Bite" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 4
 
 [node name="Reach" type="CollisionShape2D" parent="Bite"]
 position = Vector2( 0, -5 )

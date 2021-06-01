@@ -71,7 +71,7 @@ func caught_mouse():
 
 
 func get_random_position():
-	var result = Vector2(0, 0)
+	var result = Vector2.ZERO
 	result.x = rng.randi_range(-140, 140)
 	result.y = rng.randi_range(-70, 100)
 	return result

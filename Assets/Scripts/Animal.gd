@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 
 var facing_right = true
-var direction = Vector2(0, 0)
+var direction = Vector2.ZERO
 var action = "idle"
 var collided = false
 export var speed = 50
@@ -10,14 +10,14 @@ var cat_in_range = false
 var since_last_move = 0
 export var move_timeout = 1
 var rng = RandomNumberGenerator.new()
-var cat_direction = Vector2(0, 0)
+var cat_direction = Vector2.ZERO
 var move_toward_cat = true
 var player_controlled = false
 
 
 func _ready():
 	rng.randomize()
-	while direction == Vector2(0, 0):
+	while direction == Vector2.ZERO:
 		direction.x = rng.randi_range(-1, 1)
 		direction.y = rng.randi_range(-1, 1)
 
@@ -38,10 +38,10 @@ func _process(delta):
 		else:
 			since_last_move += delta
 			if since_last_move > move_timeout or collided:
-				direction = Vector2(0, 0)
+				direction = Vector2.ZERO
 				collided = false
 				since_last_move = 0
-				while direction == Vector2(0, 0):
+				while direction == Vector2.ZERO:
 					direction.x = rng.randi_range(-1, 1)
 					direction.y = rng.randi_range(-1, 1)
 
@@ -53,7 +53,7 @@ func _physics_process(delta):
 		elif direction.x == -1:
 			facing_right = false
 			
-		if direction == Vector2(0, 0):
+		if direction == Vector2.ZERO:
 			action = "idle"
 		else:
 			action = "walk"
